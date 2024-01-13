@@ -1,0 +1,731 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ASyS Practica 11: Simulink</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2024-01-13"><meta name="DC.source" content="CodigoParaPaguinaWeb.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>ASyS Practica 11: Simulink</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Integrantes</a></li><li><a href="#2">Objetivos de la Practica:</a></li><li><a href="#3">Desarrollo</a></li><li><a href="#4">Ejercicio 1:</a></li><li><a href="#27">Ejercicio 2:</a></li><li><a href="#36">Ejercicio 3:</a></li><li><a href="#39">Referencias:</a></li></ul></div><h2 id="1">Integrantes</h2><div><ul><li>Dorantes Ochoa Daniel</li><li>Ruiz Guadarrama Juan Carlos</li><li>Santos Garrido Diana Karen</li><li>Lopez Solano Irvin</li></ul></div><h2 id="2">Objetivos de la Practica:</h2><div><ul><li>Conocer Simulink</li><li>Implementar simulaciones de ecuaciones diferenciales en Simulink</li></ul></div><h2 id="3">Desarrollo</h2><p>se tienen que resolver cada uno de los siguientes problemas comenzando una nueva secci&oacute;n (para la publicaci&oacute;n) en cada uno de ellos.</p><h2 id="4">Ejercicio 1:</h2><div><ul><li>INCISO a) Para la siguiente ecuacion dada:</li></ul></div><p><img vspace="5" hspace="5" src="equ1a.png" alt=""> </p><p><b>a)</b> La soluci&oacute;n anal&iacute;tica mediante transformada de laplace</p><pre class="codeinput">syms <span class="string">t</span> <span class="string">s</span>;
+x=heaviside(t)*2*cos(4*t-pi/3);
+X=laplace(x)+(s+5)
+Y(s)=s^2+5*s+6;
+y(s)=simplify(X/Y)
+y(t)=ilaplace(y(s))
+</pre><pre class="codeoutput"> 
+X =
+ 
+s + (4*3^(1/2))/(s^2 + 16) + s/(s^2 + 16) + 5
+ 
+ 
+y(s) =
+ 
+(s^3 + 5*s^2 + 17*s + 4*3^(1/2) + 80)/((s^2 + 16)*(s^2 + 5*s + 6))
+ 
+ 
+y(t) =
+ 
+sin(4*t)/25 - cos(4*t)/50 - (3^(1/2)*sin(4*t))/50 + exp(-2*t)*(3^(1/2)/5 + 29/10) - exp(-3*t)*((4*3^(1/2))/25 + 47/25) - (3^(1/2)*cos(4*t))/25
+ 
+</pre><p><b>b)</b> La gr&aacute;fica de la soluci&oacute;n anal&iacute;tica</p><p>Para la grafica del inciso b) se uso simulink mediante el siguiente diagrama:</p><p><img vspace="5" hspace="5" src="Sequ1a.png" alt=""> </p><p>y usando el siguiente codigo obtenemos:</p><pre class="codeinput">plot(out.solT.time,out.solT.signals(3).values)
+title(<span class="string">'Solucion analitica con simulink'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_01.png" alt=""> <p><b>c)</b> El diagrama de la simulacion implemtado para Simulink</p><p>Usando tecnicas convencionales de solucion de ecuaciones diferenciales en el entorno de simulink tenemos el siguiente diagrama con sus respectivas condiciones iniciales para cada bloque:</p><p><img vspace="5" hspace="5" src="Sequ2a.png" alt=""> </p><p><img vspace="5" hspace="5" src="Sequ1CI.png" alt=""> </p><p><b>d)</b> La grafica de la soluci&oacute;n en Simulink</p><pre class="codeinput">plot(out.solT.time,out.solT.signals(2).values)
+title(<span class="string">'Solucion con simulink'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_02.png" alt=""> <p><b>e)</b> La gr&aacute;fica, en la misma figura, de la Simulaci&oacute;n y la soluci&oacute;n anal&iacute;tica.</p><p>Para cumplir con este inciso juntamos los esquemas anteriores de simulink en uno solo bajo las mismas condiciones inciales dando asi el siguiente esquema:</p><p><img vspace="5" hspace="5" src="Sequ3a.png" alt=""> </p><pre class="codeinput">plot(out.solT.time,out.solT.signals(2).values)
+hold <span class="string">on</span>;
+plot(out.solT.time,out.solT.signals(3).values)
+title(<span class="string">'Comprobacion en simulink'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+legend(<span class="string">'y(t)'</span>,<span class="string">'Analitica'</span>);
+hold <span class="string">off</span>;
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_03.png" alt=""> <p><b>f)</b> En caso de que la entrada sea una funci&oacute;n senoidal:</p><p><b>i)</b> Encuentre el escalamiento y desfasamiento de la respuesta en estado estacionario a partir de la evaluaci&oacute;n de la funci&oacute;n de transferencia (soluci&oacute;n anal&iacute;tica).</p><p>Para este subinciso haremos uso de la funcion de transferencia en el entorno de simulink mediante el siguiente esquema:</p><p><img vspace="5" hspace="5" src="Sequ4a.png" alt=""> </p><pre class="codeinput">plot(out.solT.time,out.solT.signals(1).values)
+title(<span class="string">'Funci&oacute;n de transferencia con simulink'</span>)
+ylabel(<span class="string">'y(t) en Estado estacionario'</span>)
+xlabel(<span class="string">'t'</span>)
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_04.png" alt=""> <p><b>ii)</b>	Encuentre el escalamiento y desfasamiento de la respuesta forzada a partir de las gr&aacute;ficas de Bode generadas en Matlab  (soluci&oacute;n num&eacute;rica).</p><p>Para este inciso lo que haremos sera usar la funcion bode usando la funcion de trasferencia que se calculo previamente en el inciso a) con el siguiente codigo:</p><pre class="codeinput">bode(tf([1 5 17 4*sqrt(3)+80],[1 5 22 80 96]))
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_05.png" alt=""> <p><b>iii)</b>	Verifique que concuerde la soluci&oacute;n anal&iacute;tica y la soluci&oacute;n num&eacute;rica</p><p>Para poder comprobar este subinciso nos apoyaremos en los resultados de los anteriores pues nuevamente haciendo uso de simulink jutaremos todos los esquemas de simulink manteniendo las condiciones iniciales dadas quedando el siguiente esquema:</p><p><img vspace="5" hspace="5" src="Sequ5a.png" alt=""> </p><p>Si revisamos detenidamente las graficas de bode dadas anterioremente podemos verificar que los puntos mas altos en las graficas son los siguientes:</p><p><img vspace="5" hspace="5" src="Stablasbode.png" alt=""> </p><p>Mismos valores que corresponden al punto en el cual la se&ntilde;al de salida llega al estado estacionario y para comprobarlo graficaremos todos los resultados aclarando que la solucion analitica del subiniciso i) se renombro como funcion de transferencia y la solucion analitica corresponde al calculo dado por matlab mediante el comando de "ilaplace".</p><pre class="codeinput">plot(out.solT.time,out.solT.signals(1).values)
+hold <span class="string">on</span>;
+plot(out.solT.time,out.solT.signals(2).values)
+plot(out.solT.time,out.solT.signals(3).values)
+title(<span class="string">'Correlacion de resultados en simulink'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+legend(<span class="string">'Funcion de transderencia'</span>,<span class="string">'y(t)'</span>,<span class="string">'Analitica'</span>);
+hold <span class="string">off</span>;
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_06.png" alt=""> <div><ul><li>INCISO b) Para la siguiente ecuacion dada:</li></ul></div><p><img vspace="5" hspace="5" src="equ1b.png" alt=""> </p><p><b>a)</b> La soluci&oacute;n anal&iacute;tica mediante transformada de laplace</p><pre class="codeinput">x=heaviside(t);
+X=s*laplace(x)+(s+5)
+Y=s^2+5*s+6;
+y(s)=X/Y
+y(t)=ilaplace(y(s))
+</pre><pre class="codeoutput"> 
+X =
+ 
+s + 6
+ 
+ 
+y(s) =
+ 
+(s + 6)/(s^2 + 5*s + 6)
+ 
+ 
+y(t) =
+ 
+4*exp(-2*t) - 3*exp(-3*t)
+ 
+</pre><p><b>b)</b> La gr&aacute;fica de la soluci&oacute;n anal&iacute;tica</p><p>Para la grafica del inciso b) se uso simulink mediante el siguiente diagrama:</p><p><img vspace="5" hspace="5" src="Sequ1b.png" alt=""> </p><p>y usando el siguiente codigo obtenemos:</p><pre class="codeinput">plot(out.solTequ2.time,out.solTequ2.signals(2).values)
+title(<span class="string">'Solucion analitica con simulink'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_07.png" alt=""> <p><b>c)</b> El diagrama de la simulacion implemtado para Simulink</p><p>Usando tecnicas convencionales de solucion de ecuaciones diferenciales en el entorno de simulink tenemos el siguiente diagrama con sus respectivas condiciones iniciales para cada bloque:</p><p><img vspace="5" hspace="5" src="Sequ2b.png" alt=""> </p><p><img vspace="5" hspace="5" src="Sequ2CI.png" alt=""> </p><p><b>d)</b> La grafica de la soluci&oacute;n en Simulink</p><pre class="codeinput">plot(out.solTequ2.time,out.solTequ2.signals(1).values)
+title(<span class="string">'Solucion con simulink'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_08.png" alt=""> <p><b>e)</b> La gr&aacute;fica, en la misma figura, de la Simulaci&oacute;n y la soluci&oacute;n anal&iacute;tica.</p><p>Para cumplir con este inciso juntamos los esquemas anteriores de simulink en uno solo bajo las mismas condiciones inciales dando asi el siguiente esquema:</p><p><img vspace="5" hspace="5" src="Sequ3b.png" alt=""> </p><pre class="codeinput">plot(out.solTequ2.time,out.solTequ2.signals(1).values)
+hold <span class="string">on</span>;
+plot(out.solTequ2.time,out.solTequ2.signals(2).values)
+title(<span class="string">'Comprobacion en simulink'</span>)
+ylabel(<span class="string">'y(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+legend(<span class="string">'y(t)'</span>,<span class="string">'Analitica'</span>);
+hold <span class="string">off</span>;
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_09.png" alt=""> <p>Para este ejercicios el inciso f) y sus subindices no aplican pues la entrada para esta ecuaci&oacute;n es el escalon unitario</p><h2 id="27">Ejercicio 2:</h2><p>Un p&eacute;ndulo doble oscila en un plano vertical bajo la acci&oacute;n de la gravedad. Para desplazamientos peque&ntilde;os <img src="CodigoParaPaguinaWeb_eq05883467537480801594.png" alt="$\theta_1(t)$"> y <img src="CodigoParaPaguinaWeb_eq06360884827356943511.png" alt="$\theta_2(t)$">, es posible demostrar que las ecuaciones diferenciales del movimiento son:</p><p><img src="CodigoParaPaguinaWeb_eq03779223655448065288.png" alt="$$ (m_1+m_2)l_1^2\ddot{\theta_1}(t)+m_2l_1l_2\ddot{\theta_2}(t)+(m_1+m_2)l_1g\theta_1(t)=0$$"></p><p><img src="CodigoParaPaguinaWeb_eq14214374272700259868.png" alt="$$m_2l_2^2\ddot{\theta}_2+m_2l_1l_2\ddot{\theta_1}+m_2l_2g\theta_2(t)=0$$"></p><p>donde <img src="CodigoParaPaguinaWeb_eq14826395166570924532.png" alt="$m_1=0.1$">, <img src="CodigoParaPaguinaWeb_eq14843020832342987862.png" alt="$m_2=0.1$">, <img src="CodigoParaPaguinaWeb_eq16332617504463632864.png" alt="$l_1=l_2=1$">, <img src="CodigoParaPaguinaWeb_eq07373845301188183784.png" alt="$\theta_1(0)=-1$">, <img src="CodigoParaPaguinaWeb_eq16724258297238591817.png" alt="$\theta_2(0)=1$">, <img src="CodigoParaPaguinaWeb_eq17840566201799528655.png" alt="$\dot{\theta_1}(0)=0$"> <img src="CodigoParaPaguinaWeb_eq16642747512799582851.png" alt="$\dot{\theta_2}(0)=0$">.</p><p><img vspace="5" hspace="5" src="pendulo.png" alt=""> </p><p><b>a)</b> Realiza la soluci&oacute;n s&iacute;mbolica como en el siguiente <a href="https://www.mathworks.com/help/symbolic/solve-differential-equations-using-laplace-transform.html">documento</a> , y gr&aacute;fica las soluciones</p><p>Si seguimos los pasos que se usa en docuemnto del enlace nos queda un codigo de la siguiente manera:</p><pre class="codeinput">syms <span class="string">m1</span> <span class="string">m2</span> <span class="string">l1</span> <span class="string">l2</span> <span class="string">theta1(t)</span> <span class="string">theta2(t)</span> <span class="string">g</span> <span class="string">s</span>;
+assume([m1 m2 l1 l2]&gt;0);
+dtheta1=diff(theta1,t)==0
+diff(theta2,t)==0
+d2theta1=diff(theta1,2);
+d2theta2=diff(theta2,2);
+eqn1=(m1+m2)*l1^2*d2theta1 + m2*l1*l2*d2theta2 + (m1+m2)*l1*g*theta1 == 0
+eqn2=m2*l2^2*d2theta2 + m2*l1*l2*d2theta1 + m2*l2*g*theta2 == 0
+eqn1LT=laplace(eqn1,t,s)
+eqn1LT=subs(eqn1LT,[diff(theta1,t) diff(theta2,t)],[0 0]);
+eqn2LT=laplace(eqn2,t,s)
+eqn2LT=subs(eqn2LT,[diff(theta1,t) diff(theta2,t)],[0 0]);
+syms <span class="string">theta1_LT</span> <span class="string">theta2_LT</span>
+eqn1LT = subs(eqn1LT,[laplace(theta1,t,s) laplace(theta2,t,s)],[theta1_LT theta2_LT])
+eqn2LT = subs(eqn2LT,[laplace(theta1,t,s) laplace(theta2,t,s)],[theta1_LT theta2_LT])
+eqns = [eqn1LT eqn2LT];
+vars = [theta1_LT theta2_LT];
+[theta1_LT, theta2_LT] = solve(eqns,vars)
+theta1sol = ilaplace(theta1_LT,s,t);
+theta2sol = ilaplace(theta2_LT,s,t);
+theta1sol = simplify(theta1sol)
+theta2sol = simplify(theta2sol)
+vars = [m1 m2 l1 l2 theta1(0) theta2(0) g];
+values=[.1 .1 1 1 -1 1 9.81];
+theta1sol = subs(theta1sol,vars,values)
+theta2sol = subs(theta2sol,vars,values)
+
+subplot(2,1,1)
+fplot(theta1sol,[0 2])
+title(<span class="string">'Angulo 1'</span>)
+ylabel(<span class="string">'theta1(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+
+subplot(2,1,2)
+fplot(theta2sol,[0 2])
+title(<span class="string">'Angulo 2'</span>)
+ylabel(<span class="string">'theta2(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+</pre><pre class="codeoutput"> 
+dtheta1(t) =
+ 
+diff(theta1(t), t) == 0
+ 
+ 
+ans(t) =
+ 
+diff(theta2(t), t) == 0
+ 
+ 
+eqn1(t) =
+ 
+(m1 + m2)*l1^2*diff(theta1(t), t, t) + l2*m2*l1*diff(theta2(t), t, t) + g*theta1(t)*(m1 + m2)*l1 == 0
+ 
+ 
+eqn2(t) =
+ 
+m2*l2^2*diff(theta2(t), t, t) + l1*m2*l2*diff(theta1(t), t, t) + g*m2*theta2(t)*l2 == 0
+ 
+ 
+eqn1LT =
+ 
+g*l1*(m1 + m2)*laplace(theta1(t), t, s) - l1*l2*m2*(s*theta2(0) - s^2*laplace(theta2(t), t, s) + subs(diff(theta2(t), t), t, 0)) - l1^2*(m1 + m2)*(s*theta1(0) - s^2*laplace(theta1(t), t, s) + subs(diff(theta1(t), t), t, 0)) == 0
+ 
+ 
+eqn2LT =
+ 
+g*l2*m2*laplace(theta2(t), t, s) - l1*l2*m2*(s*theta1(0) - s^2*laplace(theta1(t), t, s) + subs(diff(theta1(t), t), t, 0)) - l2^2*m2*(s*theta2(0) - s^2*laplace(theta2(t), t, s) + subs(diff(theta2(t), t), t, 0)) == 0
+ 
+ 
+eqn1LT =
+ 
+g*l1*theta1_LT*(m1 + m2) - l1^2*(m1 + m2)*(- theta1_LT*s^2 + theta1(0)*s) - l1*l2*m2*(- theta2_LT*s^2 + theta2(0)*s) == 0
+ 
+ 
+eqn2LT =
+ 
+g*l2*m2*theta2_LT - l2^2*m2*(- theta2_LT*s^2 + theta2(0)*s) - l1*l2*m2*(- theta1_LT*s^2 + theta1(0)*s) == 0
+ 
+ 
+theta1_LT =
+ 
+(s*(l1*l2*m1*theta1(0)*s^2 + g*l1*m1*theta1(0) + g*l1*m2*theta1(0) + g*l2*m2*theta2(0)))/(g^2*m1 + g^2*m2 + g*l1*m1*s^2 + g*l1*m2*s^2 + g*l2*m1*s^2 + g*l2*m2*s^2 + l1*l2*m1*s^4)
+ 
+ 
+theta2_LT =
+ 
+(s*(l1*l2*m1*theta2(0)*s^2 + g*l1*m1*theta1(0) + g*l1*m2*theta1(0) + g*l2*m1*theta2(0) + g*l2*m2*theta2(0)))/(g^2*m1 + g^2*m2 + g*l1*m1*s^2 + g*l1*m2*s^2 + g*l2*m1*s^2 + g*l2*m2*s^2 + l1*l2*m1*s^4)
+ 
+ 
+theta1sol =
+ 
+(l1*l2*m1*theta1(0)*symsum((exp(t*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k))*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2)/(g*l1*m1 + g*l1*m2 + g*l2*m1 + g*l2*m2 + 2*l1*l2*m1*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2), k, 1, 4))/2 + (g*l1*m1*theta1(0)*symsum(exp(t*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k))/(g*l1*m1 + g*l1*m2 + g*l2*m1 + g*l2*m2 + 2*l1*l2*m1*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2), k, 1, 4))/2 + (g*l1*m2*theta1(0)*symsum(exp(t*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k))/(g*l1*m1 + g*l1*m2 + g*l2*m1 + g*l2*m2 + 2*l1*l2*m1*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2), k, 1, 4))/2 + (g*l2*m2*theta2(0)*symsum(exp(t*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k))/(g*l1*m1 + g*l1*m2 + g*l2*m1 + g*l2*m2 + 2*l1*l2*m1*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2), k, 1, 4))/2
+ 
+ 
+theta2sol =
+ 
+(l1*l2*m1*theta2(0)*symsum((exp(t*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k))*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2)/(g*l1*m1 + g*l1*m2 + g*l2*m1 + g*l2*m2 + 2*l1*l2*m1*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2), k, 1, 4))/2 + (g*l1*m1*theta1(0)*symsum(exp(t*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k))/(g*l1*m1 + g*l1*m2 + g*l2*m1 + g*l2*m2 + 2*l1*l2*m1*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2), k, 1, 4))/2 + (g*l1*m2*theta1(0)*symsum(exp(t*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k))/(g*l1*m1 + g*l1*m2 + g*l2*m1 + g*l2*m2 + 2*l1*l2*m1*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2), k, 1, 4))/2 + (g*l2*m1*theta2(0)*symsum(exp(t*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k))/(g*l1*m1 + g*l1*m2 + g*l2*m1 + g*l2*m2 + 2*l1*l2*m1*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2), k, 1, 4))/2 + (g*l2*m2*theta2(0)*symsum(exp(t*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k))/(g*l1*m1 + g*l1*m2 + g*l2*m1 + g*l2*m2 + 2*l1*l2*m1*root(l1*l2*m1*z^4 + g*l2*m2*z^2 + g*l2*m1*z^2 + g*l1*m2*z^2 + g*l1*m1*z^2 + g^2*m2 + g^2*m1, z, k)^2), k, 1, 4))/2
+ 
+ 
+theta1sol =
+ 
+- (981*symsum(exp(t*root(z^4 + (981*z^2)/25 + 962361/5000, z, k))/(root(z^4 + (981*z^2)/25 + 962361/5000, z, k)^2/5 + 981/250), k, 1, 4))/2000 - symsum((exp(t*root(z^4 + (981*z^2)/25 + 962361/5000, z, k))*root(z^4 + (981*z^2)/25 + 962361/5000, z, k)^2)/(root(z^4 + (981*z^2)/25 + 962361/5000, z, k)^2/5 + 981/250), k, 1, 4)/20
+ 
+ 
+theta2sol =
+ 
+symsum((exp(t*root(z^4 + (981*z^2)/25 + 962361/5000, z, k))*root(z^4 + (981*z^2)/25 + 962361/5000, z, k)^2)/(root(z^4 + (981*z^2)/25 + 962361/5000, z, k)^2/5 + 981/250), k, 1, 4)/20
+ 
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_10.png" alt=""> <p><b>b)</b> Implementa la simulaci&oacute;n en Simulink, reporta las gr&aacute;ficas de las soluciones</p><p>Para poder realizar esta simulacion primero debemos despegar la incognita con derivada mas alta pero debido a que al hacer eso la incognita a resolver queda en terminos de la otra incognita con segunda derivada provoca que el software tenga un problema bucle en retroalimentacion.</p><p>Para solventar este problema se usaran matrices para poder resolverlo por lo que haremos uso de Matlab con el siguiente codigo:</p><pre class="codeinput">clear <span class="string">theta1(t)</span>;
+clear <span class="string">theta2(t)</span>;
+syms <span class="string">m1</span> <span class="string">m2</span> <span class="string">l1</span> <span class="string">l2</span> <span class="string">theta1</span> <span class="string">theta2</span> <span class="string">g</span> <span class="string">s</span>;
+E=[l1^2*(m1+m2) l1*l2*m2; l1*l2*m2 l2^2*m2]
+A=-[(m1+m2)*l1*g*theta1; m2*l2*g*theta2]
+XV=(inv(E))*A;
+d2T1=simplify(XV(1))
+d2T2=simplify(XV(2))
+</pre><pre class="codeoutput"> 
+E =
+ 
+[l1^2*(m1 + m2), l1*l2*m2]
+[      l1*l2*m2,  l2^2*m2]
+ 
+ 
+A =
+ 
+-g*l1*theta1*(m1 + m2)
+       -g*l2*m2*theta2
+ 
+ 
+d2T1 =
+ 
+-(g*(m1*theta1 + m2*theta1 - m2*theta2))/(l1*m1)
+ 
+ 
+d2T2 =
+ 
+(g*(m1 + m2)*(theta1 - theta2))/(l2*m1)
+ 
+</pre><p>Aclarando que d2T1 y d2T2 corresponden a la segunda derivada de theta 1 y theta2 respectivamente y que nueva ecuacion que se propuso es DX+A=0 siendo X un vector donde se encuentras incognitas. Con esto ahora si podemos pasar esquema en simulink que queda de la siguiente forma:</p><p><img vspace="5" hspace="5" src="SPnda.png" alt=""> </p><p>Donde los Matlab Functions para calcular la segunda derivada de theta 2 y theta 1 que se pueden apreciar en el esquema tienen la siguiente configuracion en cada uno de ellos respectivamente:</p><p><img vspace="5" hspace="5" src="SPndMF.png" alt=""> </p><p>Mientras que los cuadros de integracion para obtener la primera derivada de theta 2 y theta 1 tienes las siguientes condiciones inciales respectivamente:</p><p><img vspace="5" hspace="5" src="SPndCI.png" alt=""> </p><p>y por ultimos los cuadros de integracion para theta 2 y theta 1 son:</p><p><img vspace="5" hspace="5" src="SPndCI2.png" alt=""> </p><p>Con lo anterior aclarado ahora si podemos pasar a la graficacion del problema que nos la dara el siguiente codigo:</p><pre class="codeinput">figure
+plot(out.ej2.time,out.ej2.signals(1).values)
+hold <span class="string">on</span>
+plot(out.ej2.time,out.ej2.signals(2).values)
+title(<span class="string">'Solucion numerica con simulink'</span>)
+ylabel(<span class="string">'\theta(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+legend(<span class="string">'Theta 1'</span>,<span class="string">'Theta 2'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_11.png" alt=""> <p><b>c)</b> Reporta las gr&aacute;ficas de las soluciones, num&eacute;rica y simb&oacute;lica en la misma figura, una para cada soluci&oacute;n.</p><p>Para este inciso y comprobar que si concuerdan las graficas usaremos el siguiente codigo:</p><pre class="codeinput">figure
+plot(out.ej2.time,out.ej2.signals(1).values)
+hold <span class="string">on</span>
+plot(out.ej2.time,out.ej2.signals(2).values)
+title(<span class="string">'Comprobacion en simulink'</span>)
+ylabel(<span class="string">'\theta(t)'</span>)
+xlabel(<span class="string">'t'</span>)
+fplot(theta1sol,[0 10])
+fplot(theta2sol,[0 10])
+legend(<span class="string">'Theta 1 sym'</span>,<span class="string">'Theta 2 sym'</span>,<span class="string">'Theta 1 num'</span>,<span class="string">'Theta 2 num'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="CodigoParaPaguinaWeb_12.png" alt=""> <p>Se puede apreciar que concuerdan y si bien se llegan a ver segmentos de recta que no competen entre ellas se debe al paso de medicion del osciloscopio que por problemas de visualizacion no se pudieron corregir pero se logra ver que la solucion tanto numerica como simbolica son iguales.</p><h2 id="36">Ejercicio 3:</h2><p>En el siguiente <a href="https://www.mathworks.com/help/simulink/examples.html?category=index&amp;s_tid=CRUX_lftnav_example_index">enlace</a> puede encontrar varias aplicaciones desarrolladas en Simulink, elija una de estas aplicaciones, explique el problema y la implementaci&oacute;n y reproduzca los resultados, debe tomar en cuenta que algunas aplicaciones requieren una investigaci&oacute;n para poder enterlas de forma completa, no es necesario que elija la aplicaci&oacute;n mas avanzada, el objetivo de este problema es que conozca algunas de las aplicaciones que se pueden desarrollar. Podr&iacute;a ser que algunos ejemplos del enlace no necesariamente enten enfocados a Simulink, para este punto es necesario que la aplicaci&oacute;n elegida este desarrolada en Simulink.</p><p>Para este ejercicio se decidio hacer una version parecida al <a href="https://la.mathworks.com/help/simulink/slref/engine-timing-model-with-closed-loop-control.html">Engine Timing Model with Closed Loop Control</a> solo que para nuestro caso sera enfocado a los compa&ntilde;eros de Baja Sae como un modelo para poder caracterizar la curva de aceleraci&oacute;n de una manera mas precisa y poder conocer sus datos mas relevantes como acelracion, velocidad y potencia. Para ello se implementara el siguiente circuito de simulink</p><p><img vspace="5" hspace="5" src="pepe1.png" alt=""> </p><p>El cuadro de matlab function tiene la siguiente informacion:</p><p><img vspace="5" hspace="5" src="pepe2.png" alt=""> </p><p>Donde ahora con el siguiente codigo podremos ver la caracterizacion del motor para un terreno plano:</p><pre class="codeinput">figure
+plot(out.PP.time,out.PP.signals(1).values)
+hold <span class="string">on</span>
+plot(out.PP.time,out.PP.signals(2).values)
+plot(out.PP.time,out.PP.signals(3).values)
+plot(out.PP.time,out.PP.signals(4).values)
+title(<span class="string">'Datos por simulink'</span>)
+xlabel(<span class="string">'t'</span>)
+hold <span class="string">off</span>
+</pre><pre class="codeoutput error">Error using CodigoParaPaguinaWeb
+Unrecognized field name "PP".
+</pre><p>pero como a nuestros compa&ntilde;eros les interesan los valores el osciloscopio permite una funcion para medirlo con lo cual tenemos algo como esto...</p><p><img vspace="5" hspace="5" src="pepe3.png" alt=""> </p><h2 id="39">Referencias:</h2><p>Codigos de la practica fueron realizados por el Dr. Rafael Martinez Martinez. Practica 11.</p><p>Los archivos de simulink que se usaron para esta practica se encuentra en el siguiente <a href="https://correoipn-my.sharepoint.com/:f:/g/personal/ilopezs1701_alumno_ipn_mx/Es8lH8j2_gBCqyxPktNM4PMBTPM9TAjEfQ3dfKfuaixBmg?e=0kfIWA">enlace</a></p><p>Se agradece a los compa&ntilde;eros del equipo de Baja SAE Ocelot Racing por proporcionarnos la informacion necesaria y datos para la realizacion de esta practica.</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% ASyS Practica 11: Simulink
+%
+%% Integrantes
+% * Dorantes Ochoa Daniel
+% * Ruiz Guadarrama Juan Carlos
+% * Santos Garrido Diana Karen
+% * Lopez Solano Irvin
+%% Objetivos de la Practica:
+% * Conocer Simulink
+% * Implementar simulaciones de ecuaciones diferenciales en Simulink
+%% Desarrollo
+% se tienen que resolver cada uno de los siguientes problemas comenzando 
+% una nueva sección (para la publicación) en cada uno de ellos.
+%% Ejercicio 1:
+% * INCISO a)
+% Para la siguiente ecuacion dada:
+%
+% <<equ1a.png>>
+%
+% *a)* La solución analítica mediante transformada de laplace 
+%%
+syms t s;
+x=heaviside(t)*2*cos(4*t-pi/3);
+X=laplace(x)+(s+5)
+Y(s)=s^2+5*s+6;
+y(s)=simplify(X/Y)
+y(t)=ilaplace(y(s))
+%%
+% *b)* La gráfica de la solución analítica
+%
+% Para la grafica del inciso b) se uso simulink mediante el siguiente
+% diagrama:
+%
+% <<Sequ1a.png>>
+%
+% y usando el siguiente codigo obtenemos:
+%%
+plot(out.solT.time,out.solT.signals(3).values)
+title('Solucion analitica con simulink')
+ylabel('y(t)')
+xlabel('t')
+%%
+% *c)* El diagrama de la simulacion implemtado para Simulink
+%
+% Usando tecnicas convencionales de solucion de ecuaciones diferenciales en
+% el entorno de simulink tenemos el siguiente diagrama con sus respectivas 
+% condiciones iniciales para cada bloque:
+%
+% <<Sequ2a.png>>
+%
+%
+% <<Sequ1CI.png>>
+%
+% *d)* La grafica de la solución en Simulink
+%%
+plot(out.solT.time,out.solT.signals(2).values)
+title('Solucion con simulink')
+ylabel('y(t)')
+xlabel('t')
+%%
+% *e)* La gráfica, en la misma figura, de la Simulación y la solución analítica.
+%
+% Para cumplir con este inciso juntamos los esquemas anteriores de simulink
+% en uno solo bajo las mismas condiciones inciales dando asi el siguiente
+% esquema:
+%
+% <<Sequ3a.png>>
+%
+%%
+plot(out.solT.time,out.solT.signals(2).values)
+hold on;
+plot(out.solT.time,out.solT.signals(3).values)
+title('Comprobacion en simulink')
+ylabel('y(t)')
+xlabel('t')
+legend('y(t)','Analitica');
+hold off;
+%%
+% *f)* En caso de que la entrada sea una función senoidal: 
+%
+% *i)* Encuentre el escalamiento y desfasamiento de la respuesta en estado estacionario a 
+% partir de la evaluación de la función de transferencia (solución analítica).
+%
+% Para este subinciso haremos uso de la funcion de transferencia en el entorno
+% de simulink mediante el siguiente esquema:
+%
+% <<Sequ4a.png>>
+%
+%%
+plot(out.solT.time,out.solT.signals(1).values)
+title('Función de transferencia con simulink')
+ylabel('y(t) en Estado estacionario')
+xlabel('t')
+%%
+% *ii)*	Encuentre el escalamiento y desfasamiento de la respuesta forzada a partir 
+% de las gráficas de Bode generadas en Matlab  (solución numérica).
+%
+% Para este inciso lo que haremos sera usar la funcion bode usando la
+% funcion de trasferencia que se calculo previamente en el inciso a) con el
+% siguiente codigo:
+%%
+bode(tf([1 5 17 4*sqrt(3)+80],[1 5 22 80 96]))
+%%
+% *iii)*	Verifique que concuerde la solución analítica y la solución numérica
+%
+% Para poder comprobar este subinciso nos apoyaremos en los resultados de
+% los anteriores pues nuevamente haciendo uso de simulink jutaremos todos
+% los esquemas de simulink manteniendo las condiciones iniciales dadas
+% quedando el siguiente esquema:
+%
+% <<Sequ5a.png>>
+%
+% Si revisamos detenidamente las graficas de bode dadas anterioremente
+% podemos verificar que los puntos mas altos en las graficas son los siguientes:
+%
+% <<Stablasbode.png>>
+%
+% Mismos valores que corresponden al punto en el cual la señal de salida llega
+% al estado estacionario y para comprobarlo graficaremos todos los
+% resultados aclarando que la solucion analitica del subiniciso i) se renombro como 
+% funcion de transferencia y la solucion analitica corresponde al calculo dado 
+% por matlab mediante el comando de "ilaplace".
+%%
+plot(out.solT.time,out.solT.signals(1).values)
+hold on;
+plot(out.solT.time,out.solT.signals(2).values)
+plot(out.solT.time,out.solT.signals(3).values)
+title('Correlacion de resultados en simulink')
+ylabel('y(t)')
+xlabel('t')
+legend('Funcion de transderencia','y(t)','Analitica');
+hold off;
+%%
+%
+% * INCISO b)
+% Para la siguiente ecuacion dada:
+%
+% <<equ1b.png>>
+%
+% *a)* La solución analítica mediante transformada de laplace 
+%%
+x=heaviside(t);
+X=s*laplace(x)+(s+5)
+Y=s^2+5*s+6;
+y(s)=X/Y
+y(t)=ilaplace(y(s))
+%%
+% *b)* La gráfica de la solución analítica
+%
+% Para la grafica del inciso b) se uso simulink mediante el siguiente
+% diagrama:
+%
+% <<Sequ1b.png>>
+%
+% y usando el siguiente codigo obtenemos:
+%%
+plot(out.solTequ2.time,out.solTequ2.signals(2).values)
+title('Solucion analitica con simulink')
+ylabel('y(t)')
+xlabel('t')
+%%
+% *c)* El diagrama de la simulacion implemtado para Simulink
+%
+% Usando tecnicas convencionales de solucion de ecuaciones diferenciales en
+% el entorno de simulink tenemos el siguiente diagrama con sus respectivas 
+% condiciones iniciales para cada bloque:
+%
+% <<Sequ2b.png>>
+%
+%
+% <<Sequ2CI.png>>
+%
+% *d)* La grafica de la solución en Simulink
+%%
+plot(out.solTequ2.time,out.solTequ2.signals(1).values)
+title('Solucion con simulink')
+ylabel('y(t)')
+xlabel('t')
+%%
+% *e)* La gráfica, en la misma figura, de la Simulación y la solución analítica.
+%
+% Para cumplir con este inciso juntamos los esquemas anteriores de simulink
+% en uno solo bajo las mismas condiciones inciales dando asi el siguiente
+% esquema:
+%
+% <<Sequ3b.png>>
+%
+%%
+plot(out.solTequ2.time,out.solTequ2.signals(1).values)
+hold on;
+plot(out.solTequ2.time,out.solTequ2.signals(2).values)
+title('Comprobacion en simulink')
+ylabel('y(t)')
+xlabel('t')
+legend('y(t)','Analitica');
+hold off;
+%%
+%
+% Para este ejercicios el inciso f) y sus subindices no aplican pues la 
+% entrada para esta ecuación es el escalon unitario
+%
+%% Ejercicio 2:
+%
+% Un péndulo doble oscila en un plano vertical bajo la acción de la gravedad. 
+% Para desplazamientos pequeños $\theta_1(t)$ y $\theta_2(t)$, es posible 
+% demostrar que las ecuaciones diferenciales del movimiento son:
+% 
+% $$ (m_1+m_2)l_1^2\ddot{\theta_1}(t)+m_2l_1l_2\ddot{\theta_2}(t)+(m_1+m_2)l_1g\theta_1(t)=0$$
+% 
+% $$m_2l_2^2\ddot{\theta}_2+m_2l_1l_2\ddot{\theta_1}+m_2l_2g\theta_2(t)=0$$
+% 
+% donde $m_1=0.1$, $m_2=0.1$, 
+% $l_1=l_2=1$, $\theta_1(0)=-1$, $\theta_2(0)=1$, $\dot{\theta_1}(0)=0$ 
+% $\dot{\theta_2}(0)=0$. 
+%
+% <<pendulo.png>>
+%
+% *a)* Realiza la solución símbolica como en el siguiente <https://www.mathworks.com/help/symbolic/solve-differential-equations-using-laplace-transform.html documento> 
+% , y gráfica las soluciones  
+% 
+% Si seguimos los pasos que se usa en docuemnto del enlace nos queda un
+% codigo de la siguiente manera:
+%%
+syms m1 m2 l1 l2 theta1(t) theta2(t) g s; 
+assume([m1 m2 l1 l2]>0);
+dtheta1=diff(theta1,t)==0
+diff(theta2,t)==0
+d2theta1=diff(theta1,2);
+d2theta2=diff(theta2,2);
+eqn1=(m1+m2)*l1^2*d2theta1 + m2*l1*l2*d2theta2 + (m1+m2)*l1*g*theta1 == 0
+eqn2=m2*l2^2*d2theta2 + m2*l1*l2*d2theta1 + m2*l2*g*theta2 == 0
+eqn1LT=laplace(eqn1,t,s)
+eqn1LT=subs(eqn1LT,[diff(theta1,t) diff(theta2,t)],[0 0]);
+eqn2LT=laplace(eqn2,t,s)
+eqn2LT=subs(eqn2LT,[diff(theta1,t) diff(theta2,t)],[0 0]);
+syms theta1_LT theta2_LT
+eqn1LT = subs(eqn1LT,[laplace(theta1,t,s) laplace(theta2,t,s)],[theta1_LT theta2_LT])
+eqn2LT = subs(eqn2LT,[laplace(theta1,t,s) laplace(theta2,t,s)],[theta1_LT theta2_LT])
+eqns = [eqn1LT eqn2LT];
+vars = [theta1_LT theta2_LT];
+[theta1_LT, theta2_LT] = solve(eqns,vars)
+theta1sol = ilaplace(theta1_LT,s,t);
+theta2sol = ilaplace(theta2_LT,s,t);
+theta1sol = simplify(theta1sol)
+theta2sol = simplify(theta2sol)
+vars = [m1 m2 l1 l2 theta1(0) theta2(0) g];
+values=[.1 .1 1 1 -1 1 9.81];
+theta1sol = subs(theta1sol,vars,values)
+theta2sol = subs(theta2sol,vars,values)
+
+subplot(2,1,1)
+fplot(theta1sol,[0 2])                      
+title('Angulo 1')
+ylabel('theta1(t)')
+xlabel('t')
+
+subplot(2,1,2)
+fplot(theta2sol,[0 2])
+title('Angulo 2')
+ylabel('theta2(t)')
+xlabel('t')
+%%
+%
+% *b)* Implementa la simulación en Simulink, reporta las gráficas de las
+% soluciones
+% 
+% Para poder realizar esta simulacion primero debemos despegar la incognita
+% con derivada mas alta pero debido a que al hacer eso la incognita a
+% resolver queda en terminos de la otra incognita con segunda derivada
+% provoca que el software tenga un problema bucle en retroalimentacion.
+%
+% Para solventar este problema se usaran matrices para poder resolverlo por
+% lo que haremos uso de Matlab con el siguiente codigo:
+%%
+clear theta1(t);
+clear theta2(t);
+syms m1 m2 l1 l2 theta1 theta2 g s;
+E=[l1^2*(m1+m2) l1*l2*m2; l1*l2*m2 l2^2*m2]
+A=-[(m1+m2)*l1*g*theta1; m2*l2*g*theta2]
+XV=(inv(E))*A;
+d2T1=simplify(XV(1))
+d2T2=simplify(XV(2))
+%%
+%
+% Aclarando que d2T1 y d2T2 corresponden a la segunda derivada de theta 1 y
+% theta2 respectivamente y que nueva ecuacion que se propuso es DX+A=0
+% siendo X un vector donde se encuentras incognitas. Con esto ahora si
+% podemos pasar esquema en simulink que queda de la siguiente forma:
+%
+% <<SPnda.png>>
+%
+% Donde los Matlab Functions para calcular la segunda derivada de theta 2 y theta 1
+% que se pueden apreciar en el esquema tienen la siguiente configuracion en
+% cada uno de ellos respectivamente:
+%
+% <<SPndMF.png>>
+%
+% Mientras que los cuadros de integracion para obtener la primera derivada
+% de theta 2 y theta 1 tienes las siguientes condiciones inciales
+% respectivamente:
+%
+% <<SPndCI.png>>
+%
+% y por ultimos los cuadros de integracion para theta 2 y theta 1 son:
+%
+% <<SPndCI2.png>>
+%
+% Con lo anterior aclarado ahora si podemos pasar a la graficacion del
+% problema que nos la dara el siguiente codigo:
+%%
+figure
+plot(out.ej2.time,out.ej2.signals(1).values)
+hold on
+plot(out.ej2.time,out.ej2.signals(2).values)
+title('Solucion numerica con simulink')
+ylabel('\theta(t)')
+xlabel('t')
+legend('Theta 1','Theta 2')
+hold off
+%%
+% *c)* Reporta las gráficas de las soluciones, numérica y simbólica en la misma figura, una para cada solución. 
+% 
+% Para este inciso y comprobar que si concuerdan las graficas usaremos el
+% siguiente codigo:
+%%
+figure
+plot(out.ej2.time,out.ej2.signals(1).values)
+hold on
+plot(out.ej2.time,out.ej2.signals(2).values)
+title('Comprobacion en simulink')
+ylabel('\theta(t)')
+xlabel('t')
+fplot(theta1sol,[0 10])
+fplot(theta2sol,[0 10])
+legend('Theta 1 sym','Theta 2 sym','Theta 1 num','Theta 2 num')
+hold off
+%%
+% Se puede apreciar que concuerdan y si bien se llegan a ver segmentos de
+% recta que no competen entre ellas se debe al paso de medicion del
+% osciloscopio que por problemas de visualizacion no se pudieron corregir
+% pero se logra ver que la solucion tanto numerica como simbolica son
+% iguales.
+%
+%% Ejercicio 3:
+%
+% En el siguiente <https://www.mathworks.com/help/simulink/examples.html?category=index&s_tid=CRUX_lftnav_example_index enlace>
+% puede encontrar varias aplicaciones desarrolladas en Simulink, 
+% elija una de estas aplicaciones,
+% explique el problema y la implementación y reproduzca los
+% resultados, debe tomar en cuenta que algunas aplicaciones requieren
+% una investigación para poder enterlas de forma completa, no es necesario
+% que elija la aplicación mas avanzada, el objetivo de este problema es que
+% conozca algunas de las aplicaciones que se pueden desarrollar. Podría ser
+% que algunos ejemplos del enlace no necesariamente enten enfocados a Simulink, para
+% este punto es necesario que la aplicación elegida este desarrolada en
+% Simulink.
+%
+% Para este ejercicio se decidio hacer una version parecida al
+% <https://la.mathworks.com/help/simulink/slref/engine-timing-model-with-closed-loop-control.html
+% Engine Timing Model with Closed Loop Control> solo que para nuestro caso
+% sera enfocado a los compañeros de Baja Sae como un modelo para poder
+% caracterizar la curva de aceleración de una manera mas precisa y poder
+% conocer sus datos mas relevantes como acelracion, velocidad y potencia.
+% Para ello se implementara el siguiente circuito de simulink
+%
+% <<pepe1.png>>
+%
+%
+% El cuadro de matlab function tiene la siguiente informacion:
+%
+% <<pepe2.png>>
+%
+% Donde ahora con el siguiente codigo podremos ver la caracterizacion del
+% motor para un terreno plano:
+%%
+figure
+plot(out.PP.time,out.PP.signals(1).values)
+hold on
+plot(out.PP.time,out.PP.signals(2).values)
+plot(out.PP.time,out.PP.signals(3).values)
+plot(out.PP.time,out.PP.signals(4).values)
+title('Datos por simulink')
+xlabel('t')
+hold off
+%%
+% pero como a nuestros compañeros les interesan los valores el osciloscopio
+% permite una funcion para medirlo con lo cual tenemos algo como esto...
+%
+% <<pepe3.png>>
+%
+%
+%% Referencias:
+%
+% Codigos de la practica fueron realizados por el Dr. Rafael Martinez
+% Martinez. Practica 11.
+%
+% Los archivos de simulink que se usaron para esta practica se encuentra en 
+% el siguiente <https://correoipn-my.sharepoint.com/:f:/g/personal/ilopezs1701_alumno_ipn_mx/Es8lH8j2_gBCqyxPktNM4PMBTPM9TAjEfQ3dfKfuaixBmg?e=0kfIWA enlace>
+% 
+% Se agradece a los compañeros del equipo de Baja SAE Ocelot Racing por
+% proporcionarnos la informacion necesaria y datos para la realizacion de
+% esta practica.
+##### SOURCE END #####
+--></body></html>
